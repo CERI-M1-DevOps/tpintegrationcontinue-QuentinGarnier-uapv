@@ -285,4 +285,23 @@ class ListeSimpleTest {
         assertEquals("ListeSimple(Noeud(1), Noeud(3))", listeATester.toString());
         assertEquals(2, listeATester.getSize());
     }
+
+    @Test
+    void modifiePremierElementInexistant() {
+        listeATester.ajout(3);
+        listeATester.ajout(2);
+        listeATester.ajout(1);
+        listeATester.modifiePremier(4, 5); // Try to modify an element that doesn't exist
+        assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3))", listeATester.toString()); // The list remains unchanged
+    }
+
+    @Test
+    void supprimePremierElementInexistant() {
+        listeATester.ajout(3);
+        listeATester.ajout(2);
+        listeATester.ajout(1);
+        listeATester.supprimePremier(4); // Try to remove an element that doesn't exist
+        assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3))", listeATester.toString()); // The list remains unchanged
+        assertEquals(3, listeATester.getSize()); // Size remains the same
+    }
 }

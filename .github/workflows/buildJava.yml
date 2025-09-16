@@ -18,6 +18,5 @@ jobs:
         with:
           java-version: '21'
           distribution: 'corretto'
-
       - name: Build and test with Maven
         run: mvn -B package

@@ -34,9 +34,13 @@ jobs:
       - name: Generate Javadoc
         run: mvn -B javadoc:javadoc
 
+      - name: Debug Javadoc output
+        run: |
+          echo "==== Listing target/reports ===="
+          ls -R target/reports || true
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site/apidocs
-          publish_branch: gh-pages
+          publish_dir: ./target/reports/apidocs
